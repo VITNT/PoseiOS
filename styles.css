@@ -19,10 +19,61 @@ body {
   background-position: 75% 0%;
 }
 
+.top-bar {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 5vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+}
+
 .window {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 30vh;
+  width: 30vw;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 26px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  user-select: none;
+  cursor: grab;
+}
+
+#window-handle {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px;
+  border-bottom: inherit;
+}
+
+.close-button {
+  border-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.open-button {
+  border-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
 }
