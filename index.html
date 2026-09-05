@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PoseiOS</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="./images/trident.png" />
   </head>
   <body>
-    <div class="top-bar">
+    <div class="top-bar" id="top-bar">
       <p class="open-button" id="welcome-open-button">PoseiOS</p>
       <p id="time"></p>
     </div>
+    <div id="desktopApp">
+      <div class="open-button desktopApp-content" id="poseidon-md-open-button">
+        <img src="./images/trident.png" alt="tridentLogo" />
+      </div>
+      <p>Poseidon.md</p>
+    </div>
+    <div style="display: none" class="window" id="poseidon-md-window">
+      <div class="window-handle" id="poseidon-md-window-handle">
+        <div class="close-button" id="poseidon-md-close-button">X</div>
+      </div>
+      <h1>Who is Poseidon? What is poseidon?</h1>
+      <p>Poseidon is the Greek god of the sea!</p>
+    </div>
     <div class="window" id="window">
-      <div id="window-handle">
+      <div class="window-handle" id="window-handle">
         <div class="close-button" id="welcome-close-button">X</div>
       </div>
       <h1>Welcome to PoseiOS</h1>

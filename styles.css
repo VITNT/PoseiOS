@@ -30,6 +30,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 48px;
+  user-select: none;
 }
 
 .window {
@@ -48,10 +49,9 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   user-select: none;
-  cursor: grab;
 }
 
-#window-handle {
+.window-handle {
   width: 100%;
   position: absolute;
   top: 0;
@@ -60,6 +60,7 @@ body {
   justify-content: space-between;
   padding: 12px 12px;
   border-bottom: inherit;
+  cursor: grab;
 }
 
 .close-button {
@@ -74,6 +75,38 @@ body {
 }
 
 .open-button {
-  border-color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
+}
+
+/* App styling */
+
+#desktopApp {
+  padding: 64px 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  font-size: 14px;
+  gap: 8px;
+}
+
+#desktopApp img {
+  width: 56px;
+  height: 56px;
+}
+
+.desktopApp-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: rgba(255, 255, 255, 0.3) solid 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25%;
+  padding: 12px;
+}
+
+.selected {
+  background-color: rgba(0, 0, 255, 0.3);
 }
