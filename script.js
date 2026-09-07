@@ -16,7 +16,6 @@ function dragElement(element) {
 
   if (document.getElementById(element.id + "-handle")) {
     document.getElementById(element.id + "-handle").onmousedown = startDragging;
-    addWindowTapHandler(element);
   } else {
     element.onmousedown = startDragging;
   }
@@ -35,8 +34,13 @@ function dragElement(element) {
     offsetY = initialY - e.clientY;
     initialX = e.clientX;
     initialY = e.clientY;
-    element.style.top = element.offsetTop - offsetY + "px";
-    element.style.left = element.offsetLeft - offsetX + "px";
+    var finalPosition = clampWindowPos(
+      element,
+      element.offsetLeft - offsetX,
+      element.offsetTop - offsetY,
+    );
+    element.style.top = finalPosition.top + "px";
+    element.style.left = finalPosition.left + "px";
   }
 
   function stopDragging() {
@@ -45,12 +49,28 @@ function dragElement(element) {
   }
 }
 
-dragElement(document.getElementById("window"));
-dragElement(document.getElementById("poseidon-md-window"));
+// Limit the drag so that the windows don't go out of the viewport
+function clampWindowPos(element, left, top) {
+  var margin = 10;
+  var topBarH = 50;
+
+  var halfW = element.offsetWidth / 2;
+  var halfH = element.offsetHeight / 2;
+
+  var minLeft = halfW + margin;
+  var maxLeft = window.innerWidth - halfW - margin;
+
+  var minTop = topBarH + halfH + margin;
+  var maxTop = window.innerHeight - halfH - margin;
+
+  // return the position value that doesn't go out of viewport boundaries
+  return {
+    left: Math.min(Math.max(left, minLeft), maxLeft),
+    top: Math.min(Math.max(top, minTop), maxTop),
+  };
+}
 
 // Open-Close window
-var welcomeScreen = document.querySelector("#window");
-var poseidonWindow = document.querySelector("#poseidon-md-window");
 var topBar = document.querySelector("#top-bar");
 var maxIndex = 1;
 
@@ -77,26 +97,6 @@ function openWindowOnClick(element, window) {
   });
 }
 
-openWindowOnClick(
-  document.querySelector("#welcome-open-button"),
-  welcomeScreen,
-);
-
-closeWindowOnClick(
-  document.querySelector("#welcome-close-button"),
-  welcomeScreen,
-);
-
-openWindowOnClick(
-  document.querySelector("#poseidon-md-open-button"),
-  poseidonWindow,
-);
-
-closeWindowOnClick(
-  document.querySelector("#poseidon-md-close-button"),
-  poseidonWindow,
-);
-
 function addWindowTapHandler(element) {
   element.addEventListener("mousedown", () => {
     handleWindowTap(element);
@@ -108,6 +108,23 @@ function handleWindowTap(element) {
   element.style.zIndex = maxIndex;
   topBar.style.zIndex = maxIndex + 1;
 }
+
+function initializeWindow(element, element2, window) {
+  var closeButton = document.querySelector("#" + element);
+  var openButton = document.querySelector("#" + element2);
+  var screen = document.querySelector("#" + window);
+  closeWindowOnClick(closeButton, screen);
+  openWindowOnClick(openButton, screen);
+  addWindowTapHandler(screen);
+  dragElement(screen);
+}
+
+initializeWindow("welcome-close-button", "welcome-open-button", "window");
+initializeWindow(
+  "poseidon-md-close-button",
+  "poseidon-md-open-button",
+  "poseidon-md",
+);
 
 // Open-Close Apps
 var selectedIcon = undefined;
@@ -130,3 +147,12 @@ function clickIcon(element, window) {
     selectIcon(element);
   }
 }
+
+// deselect when clicking on desktop bg
+document.body.addEventListener("mousedown", (e) => {
+  if (!e.target.closest(".open-button")) {
+    if (selectedIcon !== undefined) {
+      deselectIcon(selectedIcon);
+    }
+  }
+});

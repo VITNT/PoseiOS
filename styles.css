@@ -35,7 +35,7 @@ body {
 
 .window {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 30vh;
@@ -78,24 +78,28 @@ body {
   cursor: pointer;
 }
 
-/* App styling */
+/* Poseidon.md App styling */
+#poseidon-md {
+  width: 50vw;
+  height: 60vh;
+}
 
-#desktopApp {
+#poseidon-md-app {
   padding: 64px 0 0 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: fit-content;
   font-size: 14px;
   gap: 8px;
 }
 
-#desktopApp img {
+#poseidon-md-app img {
   width: 56px;
   height: 56px;
 }
 
+/* Desktop icons */
 .desktopApp-content {
   display: flex;
   flex-direction: column;
@@ -105,8 +109,36 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 25%;
   padding: 12px;
+  user-select: none;
 }
 
 .selected {
   background-color: rgba(0, 0, 255, 0.3);
+}
+
+.poseidon-md-sidebar {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 25%;
+  height: 90%;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  border-bottom-left-radius: 22px;
+  overflow-y: auto;
+  padding-top: 24px;
+}
+
+.poseidon-md-content {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  width: 73%;
+  height: 90%;
+  border-bottom-right-radius: 22px;
+  justify-content: center;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }

@@ -8,30 +8,60 @@
     <link rel="icon" type="image/x-icon" href="./images/trident.png" />
   </head>
   <body>
+    <!-- top bar -->
     <div class="top-bar" id="top-bar">
       <p class="open-button" id="welcome-open-button">PoseiOS</p>
       <p id="time"></p>
     </div>
-    <div id="desktopApp">
+
+    <!-- app icons -->
+    <div id="poseidon-md-app">
       <div class="open-button desktopApp-content" id="poseidon-md-open-button">
         <img src="./images/trident.png" alt="tridentLogo" />
       </div>
       <p>Poseidon.md</p>
     </div>
-    <div style="display: none" class="window" id="poseidon-md-window">
-      <div class="window-handle" id="poseidon-md-window-handle">
+
+    <!-- windows -->
+    <div style="display: none" class="window" id="poseidon-md">
+      <div class="window-handle" id="poseidon-md-handle">
         <div class="close-button" id="poseidon-md-close-button">X</div>
+        <p class="header-text">Poseidon.md</p>
+      </div>
+      <div class="poseidon-md-sidebar">
+        <p>Your First Note</p>
+      </div>
+      <div class="poseidon-md-content">
+        <p>New Note</p>
+        <p>09/6/2026</p>
+        <blockquote contenteditable="true">text woohoo</blockquote>
+      </div>
+    </div>
+
+    <!-- <div id="poseidon-2-app">
+      <div class="open-button desktopApp-content" id="poseidon-2-open-button">
+        <img src="./images/trident.png" alt="tridentLogo" />
+      </div>
+      <p>Poseidon.md</p>
+    </div>
+    <div style="display: none" class="window" id="poseidon-2">
+      <div class="window-handle" id="poseidon-2-handle">
+        <div class="close-button" id="poseidon-2-close-button">X</div>
       </div>
       <h1>Who is Poseidon? What is poseidon?</h1>
       <p>Poseidon is the Greek god of the sea!</p>
-    </div>
+    </div> -->
+
     <div class="window" id="window">
       <div class="window-handle" id="window-handle">
         <div class="close-button" id="welcome-close-button">X</div>
       </div>
-      <h1>Welcome to PoseiOS</h1>
-      <p>Explore the lore behind the greek god Poseidon.</p>
+      <div>
+        <h1>Welcome to PoseiOS</h1>
+        <p>Explore the lore behind the greek god Poseidon.</p>
+      </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
