@@ -63,6 +63,13 @@ body {
   cursor: grab;
 }
 
+.main-window-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 48px;
+}
+
 .close-button {
   border-color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
@@ -76,6 +83,19 @@ body {
 
 .open-button {
   cursor: pointer;
+}
+
+/* Desktop icons */
+.desktopApp-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: rgba(255, 255, 255, 0.3) solid 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25%;
+  padding: 12px;
+  user-select: none;
 }
 
 /* Poseidon.md App styling */
@@ -94,22 +114,9 @@ body {
   gap: 8px;
 }
 
-#poseidon-md-app img {
+.appIcon img {
   width: 56px;
   height: 56px;
-}
-
-/* Desktop icons */
-.desktopApp-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: rgba(255, 255, 255, 0.3) solid 1px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 25%;
-  padding: 12px;
-  user-select: none;
 }
 
 .selected {
@@ -119,13 +126,15 @@ body {
 .poseidon-md-sidebar {
   color: black;
   background-color: rgba(255, 255, 255, 0.8);
-  width: 25%;
+  width: 30%;
   height: 90%;
   position: absolute;
   left: 5px;
   bottom: 5px;
   border-bottom-left-radius: 22px;
+  padding: 20px;
   overflow-y: auto;
+  overflow-wrap: anywhere;
   padding-top: 24px;
 }
 
@@ -134,11 +143,146 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
-  width: 73%;
+  width: 68%;
   height: 90%;
   border-bottom-right-radius: 22px;
-  justify-content: center;
+  justify-content: flex-start;
   position: absolute;
   bottom: 5px;
   right: 5px;
+  text-align: left;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.addnote {
+  margin-bottom: 16px;
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.addnote:hover {
+  background-color: rgba(0, 0, 255, 0.3);
+  transition: ease-in-out 0.1s;
+}
+
+.entry {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.entry:hover {
+  background-color: rgba(0, 0, 255, 0.3);
+  transition: ease-in-out 0.1s;
+}
+
+.note-title {
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 24px;
+  font-family: inherit;
+}
+
+.note-body {
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0);
+  margin-bottom: 10px;
+  resize: none;
+  width: auto;
+  height: fit-content;
+  font-family: inherit;
+  flex: 1;
+}
+
+.note-delete {
+  cursor: pointer;
+  padding: 6px 12px;
+  margin-top: 10px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: inherit;
+  border-radius: 16px;
+  width: 30%;
+}
+
+/* New app */
+
+#poseidon-book {
+  width: 50vw;
+  height: 50vh;
+  padding: 24px;
+}
+
+#poseidon-book-app {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.poseidon-book-sidebar {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 30%;
+  height: 88%;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  border-bottom-left-radius: 22px;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  padding-top: 24px;
+}
+
+.poseidon-book-content {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  width: 68%;
+  height: 88%;
+  border-bottom-right-radius: 22px;
+  justify-content: flex-start;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  text-align: left;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.bookCard {
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 12px;
+}
+
+.bookCard:hover {
+  background-color: rgba(0, 0, 255, 0.3);
+  transition: ease-in-out 0.1s;
+}
+
+.book-content-title {
+  font-size: 24px;
+}
+
+.book-content-author {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.book-content-body {
+  font-size: 12px;
 }

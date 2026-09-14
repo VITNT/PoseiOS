@@ -16,52 +16,54 @@
 
     <!-- app icons -->
     <div id="poseidon-md-app">
-      <div class="open-button desktopApp-content" id="poseidon-md-open-button">
+      <div
+        class="open-button appIcon desktopApp-content"
+        id="poseidon-md-open-button"
+      >
         <img src="./images/trident.png" alt="tridentLogo" />
       </div>
       <p>Poseidon.md</p>
     </div>
-
+    <div id="poseidon-book-app">
+      <div
+        class="open-button appIcon desktopApp-content"
+        id="poseidon-book-open-button"
+      >
+        <img src="./images/book.png" alt="tridentLogo" />
+      </div>
+      <p>Books</p>
+    </div>
     <!-- windows -->
     <div style="display: none" class="window" id="poseidon-md">
       <div class="window-handle" id="poseidon-md-handle">
         <div class="close-button" id="poseidon-md-close-button">X</div>
         <p class="header-text">Poseidon.md</p>
       </div>
-      <div class="poseidon-md-sidebar">
-        <p>Your First Note</p>
-      </div>
-      <div class="poseidon-md-content">
-        <p>New Note</p>
-        <p>09/6/2026</p>
-        <blockquote contenteditable="true">text woohoo</blockquote>
-      </div>
+      <div class="poseidon-md-sidebar" id="poseidon-md-sidebar"></div>
+      <div class="poseidon-md-content" id="poseidon-md-content"></div>
     </div>
 
-    <!-- <div id="poseidon-2-app">
-      <div class="open-button desktopApp-content" id="poseidon-2-open-button">
-        <img src="./images/trident.png" alt="tridentLogo" />
+    <div style="display: none" class="window" id="poseidon-book">
+      <div class="window-handle" id="poseidon-book-handle">
+        <div class="close-button" id="poseidon-book-close-button">X</div>
+        <p class="header-text">Books</p>
       </div>
-      <p>Poseidon.md</p>
+      <div class="poseidon-book-sidebar" id="poseidon-book-sidebar"></div>
+      <div class="poseidon-book-content" id="poseidon-book-content"></div>
     </div>
-    <div style="display: none" class="window" id="poseidon-2">
-      <div class="window-handle" id="poseidon-2-handle">
-        <div class="close-button" id="poseidon-2-close-button">X</div>
-      </div>
-      <h1>Who is Poseidon? What is poseidon?</h1>
-      <p>Poseidon is the Greek god of the sea!</p>
-    </div> -->
 
-    <div class="window" id="window">
+    <div class="window" id="welcome-window">
       <div class="window-handle" id="window-handle">
         <div class="close-button" id="welcome-close-button">X</div>
       </div>
-      <div>
+      <div class="main-window-content">
         <h1>Welcome to PoseiOS</h1>
-        <p>Explore the lore behind the greek god Poseidon.</p>
+        <p>
+          Explore Poseidon's Lore. Discover greek fantasy books about Poseidon.
+        </p>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
