@@ -305,7 +305,12 @@ var books = [
   {
     title: "The Son of Neptune",
     author: "Rick Riordan",
-    info: "This book is about Percy Jackson waking up in a Roman Legion far away from his greek friends...",
+    info: "This book is about Percy Jackson waking up in a Roman Demigod Camp far away from his greek friends... Percy has no recollection of his past self.",
+  },
+  {
+    title: "The Mark of Athena",
+    author: "Rick Riordan",
+    info: "Roanldo SUIII",
   },
   {
     title: "The Mark of Athena",

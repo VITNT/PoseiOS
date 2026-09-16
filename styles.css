@@ -6,6 +6,24 @@
   box-sizing: border-box;
 }
 
+:root {
+  --navy: #071826;
+
+  --text-main: white;
+  --text-dark: black;
+
+  --bg: rgba(255, 255, 255, 0.1);
+  --bg-dark: rgba(255, 255, 255, 0.16);
+  --bg-light: rgba(255, 255, 255, 0.8);
+  --border: rgba(255, 255, 255, 0.22);
+
+  --large-text: 24px;
+  --medium-text: 16px;
+  --small-text: 12px;
+
+  --blue: #5fa8c9;
+}
+
 img {
   display: block;
   object-fit: cover;
@@ -13,7 +31,7 @@ img {
 
 body {
   font-family: "Inter", sans-serif;
-  color: white;
+  color: var(--text-main);
   text-align: center;
   background-image: url("images/wallpaper.jpg");
   background-position: 75% 0%;
@@ -40,13 +58,13 @@ body {
   justify-content: center;
   height: 30vh;
   width: 30vw;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--border);
   border-radius: 26px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--bg);
   backdrop-filter: blur(12px);
   user-select: none;
 }
@@ -71,7 +89,7 @@ body {
 }
 
 .close-button {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--border);
   cursor: pointer;
   width: 24px;
   height: 24px;
@@ -85,14 +103,18 @@ body {
   cursor: pointer;
 }
 
+.header-text {
+  color: var(--seafoam);
+}
+
 /* Desktop icons */
 .desktopApp-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: rgba(255, 255, 255, 0.3) solid 1px;
-  background-color: rgba(255, 255, 255, 0.3);
+  border: solid 1px var(--border);
+  background-color: var(--bg);
   border-radius: 25%;
   padding: 12px;
   user-select: none;
@@ -120,12 +142,12 @@ body {
 }
 
 .selected {
-  background-color: rgba(0, 0, 255, 0.3);
+  background-color: var(--blue);
 }
 
 .poseidon-md-sidebar {
-  color: black;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   width: 30%;
   height: 90%;
   position: absolute;
@@ -139,8 +161,7 @@ body {
 }
 
 .poseidon-md-content {
-  color: black;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--bg-light);
   display: flex;
   flex-direction: column;
   width: 68%;
@@ -157,26 +178,25 @@ body {
 
 .addnote {
   margin-bottom: 16px;
-  background-color: white;
   padding: 16px;
   border-radius: 12px;
   cursor: pointer;
 }
 
 .addnote:hover {
-  background-color: rgba(0, 0, 255, 0.3);
+  background-color: var(--bg-hover);
   transition: ease-in-out 0.1s;
 }
 
 .entry {
   padding: 8px;
   cursor: pointer;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid black;
   text-align: left;
 }
 
 .entry:hover {
-  background-color: rgba(0, 0, 255, 0.3);
+  background-color: var(--blue);
   transition: ease-in-out 0.1s;
 }
 
@@ -207,7 +227,7 @@ body {
   margin-top: 10px;
   font-size: 12px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--bg-light);
   font-family: inherit;
   border-radius: 16px;
   width: 30%;
@@ -233,7 +253,7 @@ body {
 
 .poseidon-book-sidebar {
   color: black;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--bg-light);
   width: 30%;
   height: 88%;
   position: absolute;
@@ -248,7 +268,7 @@ body {
 
 .poseidon-book-content {
   color: black;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--bg-light);
   display: flex;
   flex-direction: column;
   width: 68%;
@@ -265,22 +285,24 @@ body {
 
 .bookCard {
   cursor: pointer;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid black;
   padding: 12px;
 }
 
 .bookCard:hover {
-  background-color: rgba(0, 0, 255, 0.3);
+  background-color: var(--blue);
   transition: ease-in-out 0.1s;
 }
 
 .book-content-title {
   font-size: 24px;
+  color: var(--text-dark);
 }
 
 .book-content-author {
   margin-bottom: 10px;
   font-size: 18px;
+  color: var(--text-dark);
 }
 
 .book-content-body {
