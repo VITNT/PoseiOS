@@ -181,10 +181,11 @@ body {
   padding: 16px;
   border-radius: 12px;
   cursor: pointer;
+  background-color: white;
 }
 
 .addnote:hover {
-  background-color: var(--bg-hover);
+  background-color: var(--blue);
   transition: ease-in-out 0.1s;
 }
 

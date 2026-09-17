@@ -17,6 +17,14 @@ Made for Hack Club Stardance
 
 ---
 
+### Features
+
+- Poseidon.md - A notes app that uses localStorage to save notes
+- Books - A compilation of greek fantasy books that includes stories about Poseidon
+- A Glassmorphic Design and UI
+- Select/Deselect features for app icons like a real operating system
+- Real Time Clock at the top bar
+
 ### Tech Stack & Attributions
 
 | Function          | Framework  |
@@ -30,12 +38,10 @@ Made for Hack Club Stardance
 ### Getting Started
 
 ```
-Clone the repo using git clone
-
-
+Clone the repo using: git clone https://github.com/VITNT/PoseiOS.git
 ```
 
 ### Deployment
 
-PoseiOS is deployed using Vercel, but it could also work through
+PoseiOS is deployed using Vercel, but it could also be deployed through
 similar services like Netlify and Github Pages.

@@ -305,17 +305,17 @@ var books = [
   {
     title: "The Son of Neptune",
     author: "Rick Riordan",
-    info: "This book is about Percy Jackson waking up in a Roman Demigod Camp far away from his greek friends... Percy has no recollection of his past self.",
+    info: "This book is about Percy Jackson waking up in a Roman Demigod Camp far away from his greek friends... Percy has no recollection of his past self. He shows his demigod powers as the Son of Poseidon.",
   },
   {
-    title: "The Mark of Athena",
-    author: "Rick Riordan",
-    info: "Roanldo SUIII",
+    title: "Poseidon",
+    author: "???",
+    info: "Poseidon is the greek god of the sea. He is the son of the titans Cronus and Rhea. He is one of the 3 strongest gods, on par with Zeus and Hades. He is also the god of storms, earthquakes, and horses.",
   },
   {
-    title: "The Mark of Athena",
-    author: "Rick Riordan",
-    info: "Roanldo SUIII",
+    title: "The Odyssey",
+    author: "Homer",
+    info: "In the Odyssey, Poseidon uses his power to send violent sea storms to throw Odysseus offcourse.",
   },
 ];
 
