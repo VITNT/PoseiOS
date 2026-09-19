@@ -24,9 +24,9 @@ function dragElement(element) {
     initialX = e.clientX;
     initialY = e.clientY;
     document.onmouseup = stopDragging;
-    document.onmousemove = dragElement;
+    document.onmousemove = dragHandling;
   }
-  function dragElement(e) {
+  function dragHandling(e) {
     e = e || window.event;
     e.preventDefault();
     offsetX = initialX - e.clientX;
