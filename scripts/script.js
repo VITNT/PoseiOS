@@ -206,9 +206,9 @@ function saveNotes() {
 
 function openNote(index) {
   currentIndex = index;
-  var note = content[index];
-  var pane = document.querySelector("#poseidon-md-content");
-  pane.innerHTML = "";
+  var note = content[currentIndex];
+  var contentPanel = document.querySelector("#poseidon-md-content");
+  contentPanel.innerHTML = "";
 
   var titleInput = document.createElement("input");
   titleInput.className = "note-title";
@@ -216,7 +216,6 @@ function openNote(index) {
   titleInput.placeholder = "Title";
   titleInput.value = note.title;
 
-  //test code
   var bodyInput = document.createElement("textarea");
   bodyInput.className = "note-body";
   bodyInput.placeholder = "Write your note...";
@@ -234,17 +233,17 @@ function openNote(index) {
     saveNotes();
     addToSidebar();
   });
+
   bodyInput.addEventListener("input", function () {
     content[currentIndex].body = bodyInput.value;
     saveNotes();
   });
 
-  pane.appendChild(titleInput);
-  pane.appendChild(bodyInput);
-  pane.appendChild(del);
+  contentPanel.appendChild(titleInput);
+  contentPanel.appendChild(bodyInput);
+  contentPanel.appendChild(del);
 
   addToSidebar();
-  // test code
 }
 
 function addToSidebar() {
@@ -260,17 +259,27 @@ function addToSidebar() {
   for (let i = 0; i < content.length; i++) {
     var note = content[i];
     var div = document.createElement("div");
-    //idk
-    div.className = "entry" + (i === currentIndex ? " active" : "");
-    //idk
-    var t = document.createElement("p");
-    t.className = "entrytitle";
-    t.textContent = note.title || "Untitled";
-    var d = document.createElement("p");
-    d.className = "entrydate";
-    d.textContent = note.date || "";
-    div.appendChild(t);
-    div.appendChild(d);
+    if (i === currentIndex) {
+      div.className = "entry" + " active";
+    } else {
+      div.className = "entry";
+    }
+    var title = document.createElement("p");
+    title.className = "entrytitle";
+    if (note.title === "") {
+      title.textContent = "Untitled";
+    } else {
+      title.textContent = note.title;
+    }
+    var date = document.createElement("p");
+    date.className = "entrydate";
+    if (note.date === "") {
+      date.textContent = "";
+    } else {
+      date.textContent = note.date;
+    }
+    div.appendChild(title);
+    div.appendChild(date);
 
     div.addEventListener("click", function () {
       openNote(i);
