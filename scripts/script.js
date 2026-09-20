@@ -318,7 +318,7 @@ var books = [
   },
   {
     title: "Poseidon",
-    author: "???",
+    author: "Mystery...",
     info: "Poseidon is the greek god of the sea. He is the son of the titans Cronus and Rhea. He is one of the 3 strongest gods, on par with Zeus and Hades. He is also the god of storms, earthquakes, and horses.",
   },
   {
@@ -350,8 +350,13 @@ function renderBooks() {
     card.appendChild(title);
     card.appendChild(author);
 
+    if (i === selectedBook) {
+      card.classList.add("selectedBook");
+    }
+
     card.addEventListener("click", function () {
       selectedBook = i;
+      renderBooks();
       renderBookContent(selectedBook);
     });
 

@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+@font-face {
+  font-family: "Zarathustra";
+  src: url("./fonts/zarathustra.otf") format("opentype");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,21 +12,19 @@
 }
 
 :root {
-  --navy: #071826;
-
   --text-main: white;
   --text-dark: black;
 
-  --bg: rgba(255, 255, 255, 0.1);
-  --bg-dark: rgba(255, 255, 255, 0.16);
-  --bg-light: rgba(255, 255, 255, 0.8);
+  --bg: #eafff82e;
   --border: rgba(255, 255, 255, 0.22);
-
-  --large-text: 24px;
-  --medium-text: 16px;
-  --small-text: 12px;
+  --bg-topbar: rgba(11, 52, 72, 0.8);
+  --bg-sidebar: #dceee8a6;
+  --bg-notes: #f6fff8;
 
   --blue: #5fa8c9;
+  --gold: #d8ad52;
+  --font-title: "Zarathustra", serif;
+  --font-body: "Inter", sans-serif;
 }
 
 img {
@@ -42,8 +45,9 @@ body {
   top: 0;
   width: 100vw;
   height: 5vh;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-topbar);
   backdrop-filter: blur(12px);
+  border-bottom: 1px solid #d7f1e947;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,8 +60,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 30vh;
-  width: 30vw;
+  width: 35vw;
   border: 1px solid var(--border);
   border-radius: 26px;
   position: absolute;
@@ -77,15 +80,49 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 12px 12px;
+  background-color: var(--bg-topbar);
+  border-top-left-radius: 26px;
+  border-top-right-radius: 26px;
   border-bottom: inherit;
   cursor: grab;
 }
 
-.main-window-content {
+#welcome-window {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  border-radius: 26px;
+}
+
+#welcome-window .window-handle {
+  position: static;
+}
+
+.main-window-content {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 12px;
   padding: 48px;
+  background-color: var(--bg-topbar);
+  border-bottom-left-radius: 26px;
+  border-bottom-right-radius: 26px;
+}
+
+.welcome-window-title {
+  font-family: var(--font-title);
+  font-size: 48px;
+  color: transparent;
+  background: linear-gradient(to right, white, var(--blue));
+  background-clip: text;
+}
+
+#welcome-open-button {
+  font-family: var(--font-title);
 }
 
 .close-button {
@@ -104,7 +141,7 @@ body {
 }
 
 .header-text {
-  color: var(--seafoam);
+  font-family: var(--font-title);
 }
 
 /* Desktop icons */
@@ -143,16 +180,17 @@ body {
 
 .selected {
   background-color: var(--blue);
+  border: 1px solid var(--gold);
 }
 
 .poseidon-md-sidebar {
-  background-color: var(--bg-light);
+  background-color: var(--bg-sidebar);
   color: var(--text-dark);
   width: 30%;
-  height: 90%;
+  height: 91.75%;
   position: absolute;
-  left: 5px;
-  bottom: 5px;
+  left: 0px;
+  bottom: 0px;
   border-bottom-left-radius: 22px;
   padding: 20px;
   overflow-y: auto;
@@ -161,16 +199,16 @@ body {
 }
 
 .poseidon-md-content {
-  background-color: var(--bg-light);
+  background-color: var(--bg-notes);
   display: flex;
   flex-direction: column;
-  width: 68%;
-  height: 90%;
+  width: 70%;
+  height: 91.75%;
   border-bottom-right-radius: 22px;
   justify-content: flex-start;
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 0px;
+  right: 0px;
   text-align: left;
   padding: 24px;
   overflow-y: auto;
@@ -181,33 +219,52 @@ body {
   padding: 16px;
   border-radius: 12px;
   cursor: pointer;
-  background-color: white;
+  background-color: var(--bg-notes);
 }
 
-.addnote:hover {
-  background-color: var(--blue);
+.addnote:active {
   transition: ease-in-out 0.1s;
+  box-shadow: 0px 0px 3px 2px var(--bg-topbar) inset;
 }
 
 .entry {
-  padding: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
   cursor: pointer;
-  border-bottom: 1px solid black;
+  border-radius: 8px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entrytitle {
+  font-family: var(--font-title);
+  font-size: 18px;
+}
+
+.entrydate {
+  font-size: 12px;
 }
 
 .entry:hover {
-  background-color: var(--blue);
+  background-color: white;
   transition: ease-in-out 0.1s;
+}
+
+.active {
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 5px 5px 0px 0px var(--bg-topbar);
 }
 
 .note-title {
   border: none;
   outline: none;
-  margin-bottom: 10px;
+  margin-bottom: 28px;
   background-color: rgba(255, 255, 255, 0);
-  font-size: 24px;
-  font-family: inherit;
+  font-size: 28px;
+  font-family: var(--font-title);
 }
 
 .note-body {
@@ -227,11 +284,12 @@ body {
   padding: 6px 12px;
   margin-top: 10px;
   font-size: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: var(--bg-light);
+  border: none;
+  background-color: var(--gold);
+  color: var(--text-main);
   font-family: inherit;
   border-radius: 16px;
-  width: 30%;
+  width: 20%;
 }
 
 /* New app */
@@ -254,12 +312,12 @@ body {
 
 .poseidon-book-sidebar {
   color: black;
-  background-color: var(--bg-light);
+  background-color: var(--bg-sidebar);
   width: 30%;
-  height: 88%;
+  height: 90%;
   position: absolute;
-  left: 5px;
-  bottom: 5px;
+  left: 0px;
+  bottom: 0px;
   border-bottom-left-radius: 22px;
   padding: 20px;
   overflow-y: auto;
@@ -269,39 +327,57 @@ body {
 
 .poseidon-book-content {
   color: black;
-  background-color: var(--bg-light);
+  background-color: var(--bg-notes);
   display: flex;
   flex-direction: column;
-  width: 68%;
-  height: 88%;
+  width: 70%;
+  height: 90%;
   border-bottom-right-radius: 22px;
   justify-content: flex-start;
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 0px;
+  right: 0px;
   text-align: left;
   padding: 24px;
   overflow-y: auto;
 }
 
+.poseidon-book-title {
+  font-family: var(--font-title);
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
 .bookCard {
+  padding: 16px;
+  margin-bottom: 20px;
   cursor: pointer;
-  border-bottom: 1px solid black;
-  padding: 12px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .bookCard:hover {
-  background-color: var(--blue);
+  background-color: white;
   transition: ease-in-out 0.1s;
 }
 
-.book-content-title {
-  font-size: 24px;
+.bookCard.selectedBook {
+  box-shadow: 5px 5px 0px 0px var(--bg-topbar);
+  background-color: white;
+}
+
+.bookCard .book-content-title {
+  font-size: 32px;
+  margin-bottom: 8px;
+  font-family: var(--font-title);
   color: var(--text-dark);
 }
 
 .book-content-author {
-  margin-bottom: 10px;
+  margin-bottom: 28px;
   font-size: 18px;
   color: var(--text-dark);
 }
