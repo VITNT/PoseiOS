@@ -22,7 +22,9 @@
   --bg-notes: #f6fff8;
 
   --blue: #5fa8c9;
+  --sand: #c2b280;
   --gold: #d8ad52;
+  --teal: #9bc5c0a8;
   --font-title: "Zarathustra", serif;
   --font-body: "Inter", sans-serif;
 }
@@ -44,15 +46,22 @@ body {
   position: absolute;
   top: 0;
   width: 100vw;
-  height: 5vh;
-  background-color: var(--bg-topbar);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid #d7f1e947;
+  height: 6vh;
   display: flex;
   justify-content: space-between;
+  border: solid 1px var(--border);
   align-items: center;
   padding: 0 48px;
   user-select: none;
+}
+
+#welcome-open-button,
+#time {
+  background: var(--bg-topbar);
+  backdrop-filter: blur(12px);
+  border-radius: 50px;
+  font-family: var(--font-title);
+  padding: 12px;
 }
 
 .window {
@@ -121,19 +130,18 @@ body {
   background-clip: text;
 }
 
-#welcome-open-button {
-  font-family: var(--font-title);
-}
-
 .close-button {
   border-color: var(--border);
   cursor: pointer;
-  width: 24px;
-  height: 24px;
+  width: 12px;
+  height: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  padding: 12px;
+  font-size: 10px;
+  background-color: var(--gold);
 }
 
 .open-button {
@@ -155,6 +163,7 @@ body {
   border-radius: 25%;
   padding: 12px;
   user-select: none;
+  background-color: #9bc5c0a8;
 }
 
 /* Poseidon.md App styling */
@@ -164,7 +173,7 @@ body {
 }
 
 #poseidon-md-app {
-  padding: 64px 0 0 24px;
+  margin: 72px 0 0 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,7 +188,7 @@ body {
 }
 
 .selected {
-  background-color: var(--blue);
+  background-color: var(--sand);
   border: 1px solid var(--gold);
 }
 
@@ -297,11 +306,11 @@ body {
 #poseidon-book {
   width: 50vw;
   height: 50vh;
-  padding: 24px;
 }
 
 #poseidon-book-app {
-  padding: 24px;
+  margin: 48px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -369,7 +378,7 @@ body {
   background-color: white;
 }
 
-.bookCard .book-content-title {
+.book-content-title {
   font-size: 32px;
   margin-bottom: 8px;
   font-family: var(--font-title);

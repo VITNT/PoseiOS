@@ -50,8 +50,8 @@ function dragElement(element) {
 
 // Limit the drag so that the windows don't go out of the viewport
 function clampWindowPos(element, left, top) {
-  var margin = 10;
-  var topBarH = 50;
+  var margin = 0;
+  var topBarH = 60;
 
   var halfW = element.offsetWidth / 2;
   var halfH = element.offsetHeight / 2;
@@ -388,3 +388,5 @@ function renderBookContent(selectedBook) {
 
 renderBooks();
 renderBookContent(0);
+
+// Eye tracking feature coming soon...
