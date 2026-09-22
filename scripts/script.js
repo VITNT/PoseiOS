@@ -172,7 +172,7 @@ function clickIcon(element, window) {
 }
 
 // deselect when clicking on desktop bg
-document.body.addEventListener("mousedown", (e) => {
+document.addEventListener("mousedown", (e) => {
   if (!e.target.closest(".open-button")) {
     if (selectedIcon !== undefined) {
       deselectIcon(selectedIcon);
