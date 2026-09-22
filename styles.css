@@ -74,14 +74,13 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 35vw;
   border: 1px solid var(--border);
+  width: 35vw;
   border-radius: 13px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--bg);
   backdrop-filter: blur(12px);
   user-select: none;
 }
@@ -404,4 +403,21 @@ body {
 .book-content-info {
   font-size: 16px;
   color: var(--text-dark);
+}
+
+.dolphin-img img {
+  width: 100px;
+  height: 100px;
+}
+
+#dolphin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 40%;
+  left: 64%;
+  transform: translate(-50%, -50%);
+  user-select: none;
 }

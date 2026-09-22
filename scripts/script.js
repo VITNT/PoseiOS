@@ -144,6 +144,11 @@ initializeWindow(
   "poseidon-book",
 );
 
+// initialize draggable dolphin
+dolphin = document.querySelector("#dolphin");
+addWindowTapHandler(dolphin);
+dragElement(dolphin);
+
 // Open-Close Apps
 var selectedIcon = undefined;
 
