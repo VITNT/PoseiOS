@@ -24,16 +24,17 @@ Made for Hack Club Stardance
 - A Glassmorphic Design and UI
 - Select/Deselect features for app icons like a real operating system
 - Real Time Clock at the top bar
+- Custom Trident Cursor
 
 ### Tech Stack & Attributions
 
-| Function          | Framework  |
-| :---------------- | :--------: |
-| Framework         |    HTML    |
-| Styling           |    CSS     |
-| Scripts           | Javascript |
-| App Icons         |  Magnific  |
-| Background Images |   Google   |
+| Function          |        Framework         |
+| :---------------- | :----------------------: |
+| Framework         |           HTML           |
+| Styling           |           CSS            |
+| Scripts           |        Javascript        |
+| App Icons         |         Magnific         |
+| Background Images | Assassin's Creed Odyssey |
 
 ### Getting Started
 

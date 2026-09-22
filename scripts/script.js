@@ -1,7 +1,14 @@
 // Real Time clock
 function updateTime() {
   var timeElement = document.getElementById("time");
-  timeElement.innerHTML = new Date().toLocaleString();
+  dateFormat = {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    hour: "numeric",
+    minute: "numeric",
+  };
+  timeElement.innerHTML = new Date().toLocaleString("en-US", dateFormat);
 }
 
 setInterval(updateTime, 1000);
