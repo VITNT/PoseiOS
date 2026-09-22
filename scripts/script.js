@@ -1,7 +1,7 @@
 // Real Time clock
 function updateTime() {
   var timeElement = document.getElementById("time");
-  dateFormat = {
+  const dateFormat = {
     weekday: "short",
     day: "numeric",
     month: "short",
@@ -13,6 +13,7 @@ function updateTime() {
 
 setInterval(updateTime, 1000);
 
+// Window functions
 //  Drag window feature
 function dragElement(element) {
   var initialX = 0;
@@ -26,7 +27,6 @@ function dragElement(element) {
     element.onmousedown = startDragging;
   }
   function startDragging(e) {
-    e = e || window.event;
     e.preventDefault();
     initialX = e.clientX;
     initialY = e.clientY;
@@ -57,17 +57,16 @@ function dragElement(element) {
 
 // Limit the drag so that the windows don't go out of the viewport
 function clampWindowPos(element, left, top) {
-  var margin = 0;
   var topBarH = 60;
 
   var halfW = element.offsetWidth / 2;
   var halfH = element.offsetHeight / 2;
 
-  var minLeft = halfW + margin;
-  var maxLeft = window.innerWidth - halfW - margin;
+  var minLeft = halfW;
+  var maxLeft = window.innerWidth - halfW;
 
-  var minTop = topBarH + halfH + margin;
-  var maxTop = window.innerHeight - halfH - margin;
+  var minTop = topBarH + halfH;
+  var maxTop = window.innerHeight - halfH;
 
   // return the position value that doesn't go out of viewport boundaries
   return {
@@ -91,43 +90,35 @@ function openWindow(element) {
   topBar.style.zIndex = maxIndex + 1;
 }
 
-function closeWindowOnClick(element, window) {
-  element.addEventListener("click", () => {
-    closeWindow(window);
-  });
-}
-
-function openWindowOnClick(element, window) {
-  element.addEventListener("click", () => {
-    if (selectedIcon != element && selectedIcon != undefined) {
-      deselectIcon(selectedIcon);
-    }
-    clickIcon(element, window);
-  });
-}
-
-function addWindowTapHandler(element) {
+function focusWindow(element) {
   element.addEventListener("mousedown", () => {
-    handleWindowTap(element);
+    maxIndex++;
+    element.style.zIndex = maxIndex;
+    topBar.style.zIndex = maxIndex + 1;
   });
-}
-
-function handleWindowTap(element) {
-  maxIndex++;
-  element.style.zIndex = maxIndex;
-  topBar.style.zIndex = maxIndex + 1;
 }
 
 function initializeWindow(element, element2, window) {
   var closeButton = document.querySelector("#" + element);
   var openButton = document.querySelector("#" + element2);
   var screen = document.querySelector("#" + window);
-  closeWindowOnClick(closeButton, screen);
-  openWindowOnClick(openButton, screen);
-  addWindowTapHandler(screen);
+
+  closeButton.addEventListener("click", () => {
+    closeWindow(screen);
+  });
+
+  openButton.addEventListener("click", () => {
+    if (selectedIcon != openButton && selectedIcon != undefined) {
+      deselectIcon(selectedIcon);
+    }
+    clickIcon(openButton, screen);
+  });
+
+  focusWindow(screen);
   dragElement(screen);
 }
 
+// initializing all windows
 initializeWindow(
   "welcome-close-button",
   "welcome-open-button",
@@ -145,8 +136,8 @@ initializeWindow(
 );
 
 // initialize draggable dolphin
-dolphin = document.querySelector("#dolphin");
-addWindowTapHandler(dolphin);
+var dolphin = document.querySelector("#dolphin");
+focusWindow(dolphin);
 dragElement(dolphin);
 
 // Open-Close Apps
@@ -180,7 +171,8 @@ document.addEventListener("mousedown", (e) => {
   }
 });
 
-// JS for poseidon.md app with local storage to save notes
+// App functions
+// POSEIDON.MD app with local storage to save notes
 
 var storage = "notes";
 var currentIndex = 0;
@@ -189,7 +181,7 @@ var storedNotes = [
   {
     title: "Welcome",
     date: "06/28/2026",
-    content: `<p contenteditable="True" style="outline: none;"> Welcome to <strong>Poseidon Notes </p>`,
+    body: `<p contenteditable="True" style="outline: none;"> Welcome to <strong>Poseidon.MD</p>`,
   },
 ];
 
@@ -220,16 +212,17 @@ function openNote(index) {
   currentIndex = index;
   var note = content[currentIndex];
   var contentPanel = document.querySelector("#poseidon-md-content");
-  contentPanel.innerHTML = "";
 
   var titleInput = document.createElement("input");
   titleInput.className = "note-title";
+  titleInput.name = "note-title";
   titleInput.type = "text";
   titleInput.placeholder = "Title";
   titleInput.value = note.title;
 
   var bodyInput = document.createElement("textarea");
   bodyInput.className = "note-body";
+  bodyInput.name = "note-body";
   bodyInput.placeholder = "Write your note...";
   bodyInput.value = note.body;
 
@@ -251,9 +244,7 @@ function openNote(index) {
     saveNotes();
   });
 
-  contentPanel.appendChild(titleInput);
-  contentPanel.appendChild(bodyInput);
-  contentPanel.appendChild(del);
+  contentPanel.replaceChildren(titleInput, bodyInput, del);
 
   addToSidebar();
 }
@@ -263,8 +254,8 @@ function addToSidebar() {
   sideBar.innerHTML = "";
 
   var newNote = document.createElement("div");
-  newNote.className = "addnote";
-  newNote.textContent = "+ New Note";
+  newNote.className = "add-note";
+  newNote.textContent = "+ NEW NOTE";
   newNote.addEventListener("click", addNote);
   sideBar.appendChild(newNote);
 
@@ -277,19 +268,15 @@ function addToSidebar() {
       div.className = "entry";
     }
     var title = document.createElement("p");
-    title.className = "entrytitle";
+    title.className = "entry-title";
     if (note.title === "") {
       title.textContent = "Untitled";
     } else {
       title.textContent = note.title;
     }
     var date = document.createElement("p");
-    date.className = "entrydate";
-    if (note.date === "") {
-      date.textContent = "";
-    } else {
-      date.textContent = note.date;
-    }
+    date.className = "entry-date";
+    date.textContent = note.date;
     div.appendChild(title);
     div.appendChild(date);
 
@@ -309,9 +296,16 @@ function addNote() {
 
 function deleteNote(index) {
   content.splice(index, 1);
-  currentIndex = content.length - 1;
-  addToSidebar();
   saveNotes();
+
+  // Prevent openNote from opening an index of -1 (undefined) when last note is deleted
+  if (content.length === 0) {
+    currentIndex = 0;
+    document.querySelector("#poseidon-md-content").innerHTML = "";
+    addToSidebar();
+    return;
+  }
+  currentIndex = content.length - 1;
   openNote(currentIndex);
 }
 
@@ -336,7 +330,7 @@ var books = [
   {
     title: "The Odyssey",
     author: "Homer",
-    info: "In the Odyssey, Poseidon uses his power to send violent sea storms to throw Odysseus offcourse.",
+    info: "In the Odyssey, Poseidon uses his power to send violent sea storms to throw Odysseus off course.",
   },
 ];
 
@@ -377,25 +371,22 @@ function renderBooks() {
 }
 
 function renderBookContent(selectedBook) {
-  var bookContent = document.querySelector("#poseidon-book-content");
   var book = books[selectedBook];
-  bookContent.innerHTML = "";
+  var bookContent = document.querySelector("#poseidon-book-content");
 
   var title = document.createElement("h2");
   title.className = "book-content-title";
-  title.innerHTML = books[selectedBook].title;
+  title.textContent = book.title;
 
   var author = document.createElement("p");
   author.className = "book-content-author";
-  author.innerText = book.author;
+  author.textContent = book.author;
 
   var info = document.createElement("p");
   info.className = "book-content-info";
-  info.innerHTML = book.info;
+  info.textContent = book.info;
 
-  bookContent.appendChild(title);
-  bookContent.appendChild(author);
-  bookContent.appendChild(info);
+  bookContent.replaceChildren(title, author, info);
 }
 
 renderBooks();

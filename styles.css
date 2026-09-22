@@ -16,22 +16,13 @@
   --text-main: white;
   --text-dark: black;
 
-  --bg: #eafff82e;
-  --border: rgba(255, 255, 255, 0.22);
-  --bg-topbar: rgba(11, 52, 72, 0.6);
-  --bg-sidebar: rgba(11, 52, 72, 0.6);
-  --bg-notes: #f5ebd8;
+  --border: #ac7b3f;
+  --bg-topbar: #17434c;
+  --bg-sidebar: #17434c;
+  --bg-notes: #efdfb8;
 
-  --blue: #5fa8c9;
   --gold: #d8ad52;
-  --teal: #9bc5c0a8;
   --font-title: "Zarathustra", serif;
-  --font-body: "Inter", sans-serif;
-}
-
-img {
-  display: block;
-  object-fit: cover;
 }
 
 body {
@@ -71,7 +62,6 @@ body {
 
 .window {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
@@ -81,7 +71,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  backdrop-filter: blur(12px);
   user-select: none;
 }
 
@@ -92,7 +81,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 12px;
+  padding: 12px;
   background-color: var(--bg-topbar);
   border-top-left-radius: 13px;
   border-top-right-radius: 13px;
@@ -101,11 +90,9 @@ body {
 }
 
 #welcome-window {
-  display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  border-radius: 13px;
 }
 
 #welcome-window .window-handle {
@@ -130,20 +117,15 @@ body {
   font-family: var(--font-title);
   font-size: 48px;
   color: transparent;
-  background: linear-gradient(to right, white, var(--blue));
+  background: linear-gradient(to right, white, var(--gold));
   background-clip: text;
 }
 
 .close-button {
-  border-color: var(--border);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+  border-radius: 5px;
   padding: 8px;
-  font-size: 10px;
-  background-color: red;
+  background-color: #ff6961;
 }
 
 .open-button {
@@ -165,6 +147,7 @@ body {
   user-select: none;
   gap: 8px;
   width: 100px;
+  font-family: "Zarathustra", serif;
 }
 
 /* Poseidon.md App styling */
@@ -188,34 +171,34 @@ body {
 }
 
 .selected {
-  background-color: var(--gold) !important;
-  box-shadow: 0px 0px 3px 2px var(--bg-topbar) inset;
-  border-radius: 13px;
+  background-color: rgba(218, 177, 103, 0.3) !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
-.poseidon-md-sidebar {
+.poseidon-md-sidebar,
+.poseidon-book-sidebar {
   background: var(--bg-sidebar);
-  color: var(--text-dark);
-  width: 30%;
-  height: 92.5%;
   position: absolute;
   left: 0px;
   bottom: 0px;
   border-bottom-left-radius: 13px;
   padding: 20px;
   overflow-y: auto;
-  overflow-wrap: anywhere;
   padding-top: 24px;
 }
 
-.poseidon-md-content {
+.poseidon-md-sidebar {
+  width: 30%;
+  height: 92.5%;
+}
+
+.poseidon-md-content,
+.poseidon-book-content {
   background: var(--bg-notes);
   display: flex;
   flex-direction: column;
-  width: 70%;
-  height: 92.5%;
   border-bottom-right-radius: 13px;
-  justify-content: flex-start;
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -224,15 +207,26 @@ body {
   overflow-y: auto;
 }
 
-.addnote {
-  margin-bottom: 16px;
-  padding: 16px;
-  border-radius: 12px;
-  cursor: pointer;
-  background-color: white;
+.poseidon-md-content {
+  width: 70%;
+  height: 92.5%;
 }
 
-.addnote:active {
+.add-note {
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background-color: rgba(218, 177, 103, 0.16);
+  color: var(--text-main);
+}
+
+.add-note:hover {
+  background-color: rgba(218, 177, 103, 0.5);
+}
+
+.add-note:active {
   transition: ease-in-out 0.1s;
   box-shadow: 0px 0px 3px 2px var(--bg-topbar) inset;
 }
@@ -249,33 +243,33 @@ body {
   color: var(--text-main);
 }
 
-.entrytitle {
+.entry-title {
   font-family: var(--font-title);
   font-size: 18px;
 }
 
-.entrydate {
+.entry-date {
   font-size: 12px;
 }
 
 .entry:hover {
-  background-color: white;
-  color: var(--text-dark);
-  transition: ease-in-out 0.1s;
+  background-color: rgba(218, 177, 103, 0.16);
+  transition: ease-in-out 0.3s;
 }
 
-.active {
-  background-color: white;
-  border: 1px solid black;
+.entry.active {
+  background-color: var(--bg-notes);
+  border: 1px solid var(--border);
   color: var(--text-dark);
-  box-shadow: 5px 5px 0px 0px var(--gold);
 }
 
 .note-title {
   border: none;
+  border-bottom: 1px solid var(--border);
   outline: none;
   margin-bottom: 28px;
-  background-color: rgba(255, 255, 255, 0);
+  padding-bottom: 8px;
+  background: none;
   font-size: 28px;
   font-family: var(--font-title);
 }
@@ -285,10 +279,10 @@ body {
   outline: none;
   margin-bottom: 10px;
   resize: none;
-  width: auto;
   height: fit-content;
   font-family: inherit;
   background: inherit;
+  font-size: 16px;
   flex: 1;
 }
 
@@ -297,12 +291,16 @@ body {
   padding: 6px 12px;
   margin-top: 10px;
   font-size: 12px;
-  border: none;
-  background-color: var(--gold);
-  color: var(--text-main);
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--border);
   font-family: inherit;
-  border-radius: 16px;
+  border-radius: 8px;
   width: 20%;
+}
+
+.note-delete:hover {
+  background: rgba(218, 177, 103, 0.3);
 }
 
 /* New app */
@@ -323,33 +321,13 @@ body {
 }
 
 .poseidon-book-sidebar {
-  background: var(--bg-sidebar);
   width: 30%;
   height: 91%;
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  border-bottom-left-radius: 13px;
-  padding: 20px;
-  overflow-y: auto;
-  overflow-wrap: anywhere;
-  padding-top: 24px;
 }
 
 .poseidon-book-content {
-  background: var(--bg-notes);
-  display: flex;
-  flex-direction: column;
   width: 70%;
   height: 91%;
-  border-bottom-right-radius: 13px;
-  justify-content: flex-start;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  text-align: left;
-  padding: 24px;
-  overflow-y: auto;
 }
 
 .poseidon-book-title {
@@ -376,14 +354,13 @@ body {
 }
 
 .bookCard:hover {
-  background-color: white;
-  transition: ease-in-out 0.1s;
-  color: var(--text-dark);
+  background-color: rgba(218, 177, 103, 0.16);
+  transition: ease-in-out 0.3s;
 }
 
 .bookCard.selectedBook {
-  box-shadow: 5px 5px 0px 0px var(--gold);
-  background-color: white;
+  background-color: var(--bg-notes);
+  border: 1px solid var(--border);
   color: var(--text-dark);
 }
 
@@ -405,6 +382,8 @@ body {
   color: var(--text-dark);
 }
 
+/* dolphin pet */
+
 .dolphin-img img {
   width: 100px;
   height: 100px;
@@ -412,12 +391,26 @@ body {
 
 #dolphin {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   top: 40%;
   left: 64%;
   transform: translate(-50%, -50%);
   user-select: none;
+}
+
+.dolphin-text {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  background-color: #17434c;
+  padding: 12px;
+  border-radius: 4px;
+  width: max-content;
+  white-space: no-wrap;
+}
+
+#dolphin:hover .dolphin-text {
+  display: flex;
+  flex-direction: column;
 }
