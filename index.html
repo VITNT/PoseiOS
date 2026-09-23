@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PoseiOS</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="icon" type="image/x-icon" href="./images/trident.png" />
   </head>
   <body>
@@ -16,24 +16,30 @@
 
     <!-- app icons -->
     <div id="poseidon-md-app">
-      <div
-        class="open-button appIcon desktopApp-content"
-        id="poseidon-md-open-button"
-      >
+      <div class="open-button desktop-app" id="poseidon-md-open-button">
         <img src="./images/trident.png" alt="tridentLogo" />
         <p>Poseidon.md</p>
       </div>
     </div>
     <div id="poseidon-book-app">
-      <div
-        class="open-button appIcon desktopApp-content"
-        id="poseidon-book-open-button"
-      >
-        <img src="./images/book.png" alt="tridentLogo" />
+      <div class="open-button desktop-app" id="poseidon-book-open-button">
+        <img src="./images/book.png" alt="bookLogo" />
         <p>Books</p>
       </div>
     </div>
+
     <!-- windows -->
+    <div class="window" id="welcome-window">
+      <div class="window-handle" id="window-handle">
+        <div class="close-button" id="welcome-close-button"></div>
+      </div>
+      <div class="main-window-content">
+        <div class="welcome-window-title">Welcome to PoseiOS</div>
+        <p>Explore Poseidon's Lore.</p>
+        <p>Discover greek fantasy books about Poseidon.</p>
+      </div>
+    </div>
+
     <div style="display: none" class="window" id="poseidon-md">
       <div class="window-handle" id="poseidon-md-handle">
         <div class="close-button" id="poseidon-md-close-button"></div>
@@ -55,17 +61,48 @@
       <div class="poseidon-book-content" id="poseidon-book-content"></div>
     </div>
 
-    <div class="window" id="welcome-window">
-      <div class="window-handle" id="window-handle">
-        <div class="close-button" id="welcome-close-button"></div>
+    <div style="display: none" class="window" id="timer-window">
+      <div class="window-handle" id="timer-window-handle">
+        <div class="close-button" id="timer-close-button"></div>
+        <p class="header-text">Timer</p>
+        <div></div>
       </div>
       <div class="main-window-content">
-        <div class="welcome-window-title">Welcome to PoseiOS</div>
-        <p>Explore Poseidon's Lore.</p>
-        <p>Discover greek fantasy books about Poseidon.</p>
+        <div class="timer-water">
+          <div id="water"></div>
+        </div>
+        <div class="timer-settings">
+          <div id="timer-time">5:00</div>
+          <div class="timer-controls">
+            <p id="timer-start">Start</p>
+            <p id="timer-pause">Pause</p>
+            <p id="timer-reset">Reset</p>
+          </div>
+        </div>
       </div>
     </div>
 
+    <div style="display: none" class="window" id="poseidon-browser">
+      <div class="window-handle" id="poseidon-browser-handle">
+        <div class="close-button" id="poseidon-browser-close-button"></div>
+        <p class="header-text">Poseidon Browser</p>
+        <div></div>
+      </div>
+      <div id="browser-content" class="main-window-content">
+        <div class="browser-interface">
+          <div class="browser-searchbar">
+            <input
+              id="browser-input"
+              type="text"
+              placeholder="Enter a URL..."
+            />
+            <div id="browser-button">Search</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- pet -->
     <div id="dolphin">
       <div class="dolphin-img">
         <img src="./images/dolphin.png" />
@@ -73,6 +110,31 @@
       </div>
     </div>
 
+    <div id="dock">
+      <div id="poseidon-md-app">
+        <div class="open-button desktop-app" id="poseidon-md-open-button__dock">
+          <img src="./images/trident.png" alt="tridentLogo" />
+        </div>
+      </div>
+      <div id="poseidon-book-app">
+        <div
+          class="open-button desktop-app"
+          id="poseidon-book-open-button__dock"
+        >
+          <img src="./images/book.png" alt="bookLogo" />
+        </div>
+      </div>
+      <div id="poseidon-timer-app">
+        <div class="open-button desktop-app" id="timer-open-button__dock">
+          <img src="./images/sand-clock.png" alt="timerLogo" />
+        </div>
+      </div>
+      <div id="poseidon-browser-app">
+        <div class="open-button desktop-app" id="browser-open-button__dock">
+          <img src="./images/browser.png" alt="browserLogo" />
+        </div>
+      </div>
+    </div>
     <script src="./scripts/script.js"></script>
   </body>
 </html>

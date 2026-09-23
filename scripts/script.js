@@ -118,7 +118,7 @@ function initializeWindow(element, element2, window) {
   dragElement(screen);
 }
 
-// initializing all windows
+// initializing all desktop
 initializeWindow(
   "welcome-close-button",
   "welcome-open-button",
@@ -133,6 +133,28 @@ initializeWindow(
   "poseidon-book-close-button",
   "poseidon-book-open-button",
   "poseidon-book",
+);
+
+// init windows for docks
+initializeWindow(
+  "poseidon-md-close-button",
+  "poseidon-md-open-button__dock",
+  "poseidon-md",
+);
+initializeWindow(
+  "poseidon-book-close-button",
+  "poseidon-book-open-button__dock",
+  "poseidon-book",
+);
+initializeWindow(
+  "timer-close-button",
+  "timer-open-button__dock",
+  "timer-window",
+);
+initializeWindow(
+  "poseidon-browser-close-button",
+  "browser-open-button__dock",
+  "poseidon-browser",
 );
 
 // initialize draggable dolphin
@@ -181,7 +203,7 @@ var storedNotes = [
   {
     title: "Welcome",
     date: "06/28/2026",
-    body: `<p contenteditable="True" style="outline: none;"> Welcome to <strong>Poseidon.MD</p>`,
+    body: "Welcome to POSEIDON.md",
   },
 ];
 
@@ -392,4 +414,75 @@ function renderBookContent(selectedBook) {
 renderBooks();
 renderBookContent(0);
 
-// Eye tracking feature coming soon...
+// Timer
+var timerStartButton = document.querySelector("#timer-start");
+var timerPauseButton = document.querySelector("#timer-pause");
+var timerResetButton = document.querySelector("#timer-reset");
+var timeLeft = document.querySelector("#timer-time");
+var waterLevel = document.querySelector("#water");
+var waterHeight = 150;
+var interval = null;
+
+var totalTime = 300; // 1500 sec = 25 min
+
+// update the time
+function updateTimer() {
+  const min = Math.floor(totalTime / 60);
+  const seconds = totalTime % 60;
+
+  timeLeft.innerHTML = `${min.toString()}:${seconds.toString().padStart(2, "0")}`;
+}
+// lower the time every second
+function startTimer() {
+  if (interval !== null) {
+    return;
+  }
+  interval = setInterval(function () {
+    totalTime--;
+    waterHeight = waterHeight - 0.5;
+    waterLevel.style.height = waterHeight.toString() + "px";
+    updateTimer();
+
+    if (totalTime === 0) {
+      clearInterval(interval);
+      interval = null;
+      waterHeight = 150;
+      waterLevel.style.height = waterHeight.toString() + "px";
+      totalTime = 300;
+      updateTimer();
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  clearInterval(interval);
+  interval = null;
+}
+
+function resetTimer() {
+  clearInterval(interval);
+  interval = null;
+  totalTime = 300;
+  waterHeight = 150;
+  waterLevel.style.height = waterHeight.toString() + "px";
+  updateTimer();
+}
+
+timerStartButton.addEventListener("click", startTimer);
+timerPauseButton.addEventListener("click", pauseTimer);
+timerResetButton.addEventListener("click", resetTimer);
+
+// browser
+
+inputUrl = document.querySelector("#browser-input");
+searchButton = document.querySelector("#browser-button");
+
+function openUrl() {
+  let url = inputUrl.value;
+  if (!url.includes("https://")) {
+    url = "https://www.google.com/search?q=" + inputUrl.value;
+  }
+  window.open(url, "_blank");
+}
+
+searchButton.addEventListener("click", openUrl);

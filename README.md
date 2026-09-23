@@ -25,6 +25,9 @@ Made for Hack Club Stardance
 - Select/Deselect features for app icons like a real operating system
 - Real Time Clock at the top bar
 - Custom Trident Cursor
+- Timer App
+- Simple Google Search Browser
+- Dock
 
 ### Tech Stack & Attributions
 

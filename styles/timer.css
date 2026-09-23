@@ -1,0 +1,53 @@
+#timer-window {
+  width: 25vw;
+}
+
+.timer-water {
+  margin-top: 16px;
+  padding-top: 4px;
+  height: 157px;
+  width: 54px;
+  border-left: 3px solid var(--border);
+  border-bottom: 3px solid var(--border);
+  border-right: 3px solid var(--border);
+  position: relative;
+}
+
+#timer-time {
+  font-size: 32px;
+}
+
+#water {
+  height: 150px;
+  width: 100%;
+  background-color: teal;
+  position: absolute;
+  bottom: 0;
+}
+
+.timer-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.timer-controls p {
+  background-color: green;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#timer-pause {
+  background-color: orange;
+}
+
+#timer-reset {
+  background-color: red;
+}

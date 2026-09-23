@@ -1,0 +1,35 @@
+#poseidon-browser {
+  border-radius: 13px;
+  width: 20vw;
+  height: 20vh;
+}
+
+#browser-content {
+  height: 20vh;
+}
+
+.browser-interface {
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+#browser-input {
+  padding: 12px;
+  border-radius: 13px;
+  font-family: "Inter", sans-serif;
+  border: 1px solid var(--border);
+}
+
+#browser-button {
+  padding: 12px;
+  border-radius: 13px;
+  background: var(--bg-notes);
+  color: var(--text-dark);
+}

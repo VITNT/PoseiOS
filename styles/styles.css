@@ -1,15 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+@import url(/styles/book.css);
+@import url(/styles/poseidon-md.css);
+@import url(/styles/timer.css);
+@import url(/styles/browser.css);
+
 @font-face {
   font-family: "Zarathustra";
-  src: url("./fonts/zarathustra.otf") format("opentype");
+  src: url("../fonts/zarathustra.otf") format("opentype");
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: url(./images/trident-cursor.png), default;
+  cursor: url(/images/trident-cursor.png), default;
 }
 
 :root {
@@ -29,7 +34,7 @@ body {
   font-family: "Inter", sans-serif;
   color: var(--text-main);
   text-align: center;
-  background-image: url("images/wallpaper.jpg");
+  background-image: url("/images/wallpaper.jpg");
   background-position: 75% 0%;
   display: flex;
   flex-direction: column;
@@ -47,7 +52,7 @@ body {
   align-items: center;
   padding: 0 48px;
   user-select: none;
-  background-image: url("./images/paper.jpg");
+  background-image: url("/images/paper.jpg");
   background-position: top center;
 }
 
@@ -72,6 +77,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   user-select: none;
+  overflow: hidden;
 }
 
 .window-handle {
@@ -103,6 +109,7 @@ body {
   display: flex;
   flex: 1;
   width: 100%;
+  height: fit-content;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -136,8 +143,8 @@ body {
   font-family: var(--font-title);
 }
 
-/* Desktop icons */
-.desktopApp-content {
+/* Desktop App icons */
+.desktop-app {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -150,22 +157,7 @@ body {
   font-family: "Zarathustra", serif;
 }
 
-/* Poseidon.md App styling */
-#poseidon-md {
-  width: 50vw;
-  height: 60vh;
-}
-
-#poseidon-md-app {
-  margin: 72px 0 0 48px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100px;
-  font-size: 14px;
-}
-
-.appIcon img {
+.desktop-app img {
   width: 56px;
   height: 56px;
 }
@@ -188,11 +180,6 @@ body {
   padding-top: 24px;
 }
 
-.poseidon-md-sidebar {
-  width: 30%;
-  height: 92.5%;
-}
-
 .poseidon-md-content,
 .poseidon-book-content {
   background: var(--bg-notes);
@@ -205,181 +192,6 @@ body {
   text-align: left;
   padding: 24px;
   overflow-y: auto;
-}
-
-.poseidon-md-content {
-  width: 70%;
-  height: 92.5%;
-}
-
-.add-note {
-  margin-bottom: 16px;
-  padding: 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  border: 1px solid var(--border);
-  background-color: rgba(218, 177, 103, 0.16);
-  color: var(--text-main);
-}
-
-.add-note:hover {
-  background-color: rgba(218, 177, 103, 0.5);
-}
-
-.add-note:active {
-  transition: ease-in-out 0.1s;
-  box-shadow: 0px 0px 3px 2px var(--bg-topbar) inset;
-}
-
-.entry {
-  padding: 14px;
-  margin-bottom: 16px;
-  cursor: pointer;
-  border-radius: 8px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  color: var(--text-main);
-}
-
-.entry-title {
-  font-family: var(--font-title);
-  font-size: 18px;
-}
-
-.entry-date {
-  font-size: 12px;
-}
-
-.entry:hover {
-  background-color: rgba(218, 177, 103, 0.16);
-  transition: ease-in-out 0.3s;
-}
-
-.entry.active {
-  background-color: var(--bg-notes);
-  border: 1px solid var(--border);
-  color: var(--text-dark);
-}
-
-.note-title {
-  border: none;
-  border-bottom: 1px solid var(--border);
-  outline: none;
-  margin-bottom: 28px;
-  padding-bottom: 8px;
-  background: none;
-  font-size: 28px;
-  font-family: var(--font-title);
-}
-
-.note-body {
-  border: none;
-  outline: none;
-  margin-bottom: 10px;
-  resize: none;
-  height: fit-content;
-  font-family: inherit;
-  background: inherit;
-  font-size: 16px;
-  flex: 1;
-}
-
-.note-delete {
-  cursor: pointer;
-  padding: 6px 12px;
-  margin-top: 10px;
-  font-size: 12px;
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--border);
-  font-family: inherit;
-  border-radius: 8px;
-  width: 20%;
-}
-
-.note-delete:hover {
-  background: rgba(218, 177, 103, 0.3);
-}
-
-/* New app */
-
-#poseidon-book {
-  width: 50vw;
-  height: 50vh;
-}
-
-#poseidon-book-app {
-  margin-left: 48px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100px;
-  font-size: 14px;
-}
-
-.poseidon-book-sidebar {
-  width: 30%;
-  height: 91%;
-}
-
-.poseidon-book-content {
-  width: 70%;
-  height: 91%;
-}
-
-.poseidon-book-title {
-  font-family: var(--font-title);
-  font-size: 20px;
-  margin-bottom: 4px;
-  color: inherit;
-}
-
-.poseidon-book-author {
-  color: inherit;
-}
-
-.bookCard {
-  padding: 16px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  border-radius: 8px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  color: var(--text-main);
-}
-
-.bookCard:hover {
-  background-color: rgba(218, 177, 103, 0.16);
-  transition: ease-in-out 0.3s;
-}
-
-.bookCard.selectedBook {
-  background-color: var(--bg-notes);
-  border: 1px solid var(--border);
-  color: var(--text-dark);
-}
-
-.book-content-title {
-  font-size: 32px;
-  margin-bottom: 8px;
-  font-family: var(--font-title);
-  color: var(--text-dark);
-}
-
-.book-content-author {
-  margin-bottom: 28px;
-  font-size: 18px;
-  color: var(--text-dark);
-}
-
-.book-content-info {
-  font-size: 16px;
-  color: var(--text-dark);
 }
 
 /* dolphin pet */
@@ -413,4 +225,43 @@ body {
 #dolphin:hover .dolphin-text {
   display: flex;
   flex-direction: column;
+}
+
+/* Dock */
+#dock {
+  background-color: #17434c;
+  padding: 8px;
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 13px;
+  display: flex;
+  gap: 12px;
+}
+
+#dock button {
+  background: rgba(218, 177, 103, 0.5);
+  border: none;
+}
+
+#dock #poseidon-md-app,
+#dock #poseidon-book-app {
+  margin: 0;
+}
+
+#dock .open-button {
+  padding: 4px 0;
+}
+
+#dock .desktop-app,
+#dock #poseidon-book-app,
+#dock #poseidon-md-app {
+  width: 80px;
+}
+
+#dock .desktop-app img {
+  padding: 0;
+  width: 50px;
+  height: 50px;
 }

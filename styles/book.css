@@ -1,0 +1,76 @@
+#poseidon-book {
+  width: 50vw;
+  height: 50vh;
+}
+
+#poseidon-book-app {
+  margin-left: 48px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  font-size: 14px;
+}
+
+.poseidon-book-sidebar {
+  width: 30%;
+  height: 91%;
+}
+
+.poseidon-book-content {
+  width: 70%;
+  height: 91%;
+}
+
+.poseidon-book-title {
+  font-family: var(--font-title);
+  font-size: 20px;
+  margin-bottom: 4px;
+  color: inherit;
+}
+
+.poseidon-book-author {
+  color: inherit;
+}
+
+.bookCard {
+  padding: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-main);
+}
+
+.bookCard:hover {
+  background-color: rgba(218, 177, 103, 0.16);
+  transition: ease-in-out 0.3s;
+}
+
+.bookCard.selectedBook {
+  background-color: var(--bg-notes);
+  border: 1px solid var(--border);
+  color: var(--text-dark);
+}
+
+.book-content-title {
+  font-size: 32px;
+  margin-bottom: 8px;
+  font-family: var(--font-title);
+  color: var(--text-dark);
+}
+
+.book-content-author {
+  margin-bottom: 28px;
+  font-size: 18px;
+  color: var(--text-dark);
+}
+
+.book-content-info {
+  font-size: 16px;
+  color: var(--text-dark);
+}
