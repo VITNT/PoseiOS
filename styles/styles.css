@@ -30,15 +30,21 @@
   --font-title: "Zarathustra", serif;
 }
 
+#wallpaper {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+}
+
 body {
   font-family: "Inter", sans-serif;
   color: var(--text-main);
   text-align: center;
   background-image: url("/images/wallpaper.jpg");
   background-position: 75% 0%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .top-bar {
@@ -155,11 +161,13 @@ body {
   gap: 8px;
   width: 100px;
   font-family: "Zarathustra", serif;
+  cursor: pointer;
 }
 
 .desktop-app img {
   width: 56px;
   height: 56px;
+  cursor: pointer;
 }
 
 .selected {
@@ -192,6 +200,23 @@ body {
   text-align: left;
   padding: 24px;
   overflow-y: auto;
+}
+
+/* Settings */
+#poseidon-setting {
+  flex-direction: column;
+  width: min(360px, 90vw);
+}
+#poseidon-setting select {
+  padding: 12px;
+  border-radius: 6px;
+  font: inherit;
+}
+#poseidon-setting .main-window-content {
+  margin-top: 16px;
+}
+#poseidon-setting a {
+  color: var(--gold);
 }
 
 /* dolphin pet */

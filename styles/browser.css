@@ -1,11 +1,14 @@
 #poseidon-browser {
   border-radius: 13px;
-  width: 20vw;
-  height: 20vh;
+  width: 50vw;
+  height: fit-content;
 }
 
 #browser-content {
-  height: 20vh;
+  height: fit-content;
+  overflow-y: scroll;
+  padding: 0;
+  font-size: 12px;
 }
 
 .browser-interface {
@@ -18,18 +21,34 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+  margin-top: 55px;
 }
 
 #browser-input {
   padding: 12px;
   border-radius: 13px;
   font-family: "Inter", sans-serif;
+  font-size: inherit;
   border: 1px solid var(--border);
 }
 
-#browser-button {
+#browser-button,
+#browser-open {
   padding: 12px;
   border-radius: 13px;
   background: var(--bg-notes);
   color: var(--text-dark);
+  cursor: pointer;
+}
+
+#browser-view {
+  margin-top: 16px;
+  height: 100%;
+  width: 50vw;
+  height: 60vh;
+  border: 1px solid var(--border);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  cursor: inherit;
 }

@@ -1,6 +1,6 @@
 <div align="center" >
 
-# PoseiOS 🔱
+# PoseiOS
 
 <img src="./images/readme-demo.jpeg">
 
@@ -15,9 +15,7 @@ Made for Hack Club Stardance
 
 </div>
 
----
-
-### Features
+## Features
 
 - Poseidon.md - A notes app that uses localStorage to save notes
 - Books - A compilation of greek fantasy books that includes stories about Poseidon
@@ -26,10 +24,12 @@ Made for Hack Club Stardance
 - Real Time Clock at the top bar
 - Custom Trident Cursor
 - Timer App
-- Simple Google Search Browser
+- Simple Google Search Browser\*
 - Dock
 
-### Tech Stack & Attributions
+<sub>\*Note the browser feature only works for wikipedia for now (search `https://wikipedia.com` in the address bar).</sub>
+
+## Tech Stack & Attributions
 
 | Function          |        Framework         |
 | :---------------- | :----------------------: |
@@ -38,14 +38,24 @@ Made for Hack Club Stardance
 | Scripts           |        Javascript        |
 | App Icons         |         Magnific         |
 | Background Images | Assassin's Creed Odyssey |
+| More Wallpapers   |    Wallpapers Delight    |
+| Sounds            |         Zapslat          |
 
-### Getting Started
+## Getting Started
+
+1. Clone the repo by running the command below in the terminal
 
 ```
-Clone the repo using: git clone https://github.com/VITNT/PoseiOS.git
+git clone https://github.com/VITNT/PoseiOS.git
 ```
 
-### Deployment
+2. Open the repo folder in VSCode or another IDE that supports HTML/CSS/JS
+
+3. Install the LiveServer extension and click "Go Live"
+
+4. Open the local port and you should see PoseiOS in action!
+
+## Deployment
 
 PoseiOS is deployed using Vercel, but it could also be deployed through
 similar services like Netlify and Github Pages.
