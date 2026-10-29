@@ -2,7 +2,7 @@
 
 # PoseiOS
 
-<img src="./images/readme-demo.jpeg">
+<img src="./images/readme-img.png">
 
 **A Poseidon-themed Operating System that runs directly in the browser.**
 
